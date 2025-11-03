@@ -1,0 +1,37 @@
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+#  push:
+ #   branches: [ master ]
+  #pull_request:
+   # branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Boman-scan:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so yours job can access it
+      - uses: actions/checkout@v2
+      
+      # Runs a single command using the runners shell
+      - name: Install packages
+        run: pip install --extra-index-url https://test.pypi.org/simple/ boman-cli-uat==15.4.11
+        #run: pip install boman-cli==2.4.6
+      - name: Run scan  
+        run: boman-cli-uat -a run -u https://qa.boman.ai 
+        
+        #sudo boman-cli -a run -u https://dashboard.boman.ai/ -at ${{secrets.BOMAN_APP_TOKEN}} -ct ${{secrets.BOMAN_CUSTOMER_TOKEN}}
+
+     # - name: Upload Artifacts
+      #  uses: actions/upload-artifact@v4
+     #   with:
+      #    name: my-artifacts
+       #   path: |
+         #   boman_zap_auth_plan.yaml
+          #  session_management.js
+          #  boman_semgrep.jsoin
+        #  retention-days: 5

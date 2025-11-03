@@ -1,9 +1,6 @@
 Auth:
-  project_token: "2b7b132e-3353-426e-a1bb-d10ac8ec1259"
-  customer_token:  "4941f85a-5453-4f94-9247-d5565b4bd116"
-
-SAST:
-  language: "java-snyk-sast"
-
-SCA:
-  language: "java-snyk-sca"
+  project_token: 71803bea-bba4-4f25-a0b5-e629e3754499
+  customer_token: 5b2f4dbd-a873-4042-8441-ff38fef71ed5
+#SAST:
+ # language: opengrep
+SBOM: true
